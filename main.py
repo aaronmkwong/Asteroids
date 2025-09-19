@@ -1,5 +1,6 @@
 import pygame
-from  constants import *
+from constants import *
+from player import *
 
 def main():
     
@@ -8,12 +9,12 @@ def main():
     print(f"Screen width: {SCREEN_WIDTH}")
     print(f"Screen height: {SCREEN_HEIGHT}")
     
-    # get new GIU window
+    # get new GUI window
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     
     clock = pygame.time.Clock()
-    dt = 0
-
+    dt = 0 # delta time
+    
     # intentional infinite loop
     while True:
 
@@ -23,11 +24,15 @@ def main():
                 return
         
         screen.fill("black") # solid blank screen fill
-        
+
+        player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, PLAYER_RADIUS) # instantiate player on screen middle
+
+        player.draw(screen) # re-render each frame
+
         pygame.display.flip() # refresh screen
 
         dt = clock.tick(60) / 1000 # pause 1/60 second and return delta time in seconds
-
+        
 # main() function only called when file directly run
 if __name__ == "__main__":
     main()
