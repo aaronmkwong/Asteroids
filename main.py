@@ -14,7 +14,10 @@ def main():
     
     clock = pygame.time.Clock()
     dt = 0 # delta time
-    
+
+    # instantiate player on screen middle
+    player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, PLAYER_RADIUS) 
+
     # intentional infinite loop
     while True:
 
@@ -23,16 +26,21 @@ def main():
             if event.type == pygame.QUIT:
                 return
         
-        screen.fill("black") # solid blank screen fill
+        # solid blank screen fill
+        screen.fill("black") 
 
-        player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, PLAYER_RADIUS) # instantiate player on screen middle
+        # rotate player
+        player.update(dt)
 
-        player.draw(screen) # re-render each frame
+        # re-render each frame
+        player.draw(screen) 
 
-        pygame.display.flip() # refresh screen
+        # refresh screen
+        pygame.display.flip() 
 
-        dt = clock.tick(60) / 1000 # pause 1/60 second and return delta time in seconds
-        
+        # pause 1/60 second and return delta time in seconds
+        dt = clock.tick(60) / 1000
+
 # main() function only called when file directly run
 if __name__ == "__main__":
     main()
