@@ -29,7 +29,7 @@ def main():
         # solid blank screen fill
         screen.fill("black") 
 
-        # rotate player
+        # move player
         player.update(dt)
 
         # re-render each frame
