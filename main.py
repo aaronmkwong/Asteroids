@@ -15,6 +15,11 @@ def main():
     clock = pygame.time.Clock()
     dt = 0 # delta time
 
+    # create groups to organize objects in static field containers
+    updatable = pygame.sprite.Group()
+    drawable = pygame.sprite.Group()
+    Player.containers = (updatable, drawable)
+
     # instantiate player on screen middle
     player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, PLAYER_RADIUS) 
 
@@ -29,11 +34,12 @@ def main():
         # solid blank screen fill
         screen.fill("black") 
 
-        # move player
-        player.update(dt)
+        # move player via updatable group
+        updatable.update(dt)
 
-        # re-render each frame
-        player.draw(screen) 
+        # loop over drawables group and render each 
+        for _ in drawable:
+            _.draw(screen)
 
         # refresh screen
         pygame.display.flip() 
