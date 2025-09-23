@@ -46,6 +46,11 @@ def main():
         # move player via updatable group
         updatable.update(dt)
 
+        # loop over asteroids if collide with ship
+        for _ in asteroids:
+            if _.collision(player) == True:
+                return print("Game over !"), exit()
+
         # loop over drawables group and render each 
         for _ in drawable:
             _.draw(screen)
