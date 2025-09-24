@@ -1,5 +1,6 @@
 from circleshape import * 
 from constants import *
+from shot import *
 
 # draw spaceship for player
 # player looks like triangle but circle will represent hitbox
@@ -31,7 +32,7 @@ class Player(CircleShape):
         forward = pygame.Vector2(0, 1).rotate(self.rotation)
         self.position += forward * PLAYER_SPEED * dt
 
-    # apply rotation to keys 
+    # apply keys 
     def update(self, dt):
         keys = pygame.key.get_pressed()
 
@@ -46,6 +47,17 @@ class Player(CircleShape):
 
         if keys[pygame.K_w]:
             self.move(dt)
+        
+        if keys[pygame.K_SPACE]:
+            self.shoot()
+
+    # create shot at player position and set velocity
+    def shoot(self):
+        shot = Shot(self.position.x, self.position.y)
+        shot.velocity = pygame.Vector2(0, 1).rotate(self.rotation) * PLAYER_SHOOT_SPEED
+
+
+
     
    
 
