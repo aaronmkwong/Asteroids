@@ -9,7 +9,8 @@ from shot import *
 class Player(CircleShape):
     def __init__(self, x, y, radius):
         super().__init__(x, y, radius)
-        self.rotation = 0
+        self.rotation = 0  
+        self.timer = 0 # shot timer 
 
     def draw(self, screen):
         pygame.draw.polygon(screen, "white", self.triangle(), 2)
@@ -35,7 +36,7 @@ class Player(CircleShape):
     # apply keys 
     def update(self, dt):
         keys = pygame.key.get_pressed()
-
+        
         if keys[pygame.K_a]:
             self.rotate(-dt)
 
@@ -49,7 +50,14 @@ class Player(CircleShape):
             self.move(dt)
         
         if keys[pygame.K_SPACE]:
-            self.shoot()
+            if self.timer > 0:
+                pass
+            else:
+                # player shoots per interval PLAYER_SHOOT_COOLDOWN 
+                self.timer = PLAYER_SHOOT_COOLDOWN
+                self.shoot()
+        
+        self.timer -= dt
 
     # create shot at player position and set velocity
     def shoot(self):
