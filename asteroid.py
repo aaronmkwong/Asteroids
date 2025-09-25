@@ -18,21 +18,20 @@ class Asteroid(CircleShape):
     def split(self):
         self.kill() # add kill to remove initially
 
-        # SPLIT WORK IN PROGRESS
-        # if self.radius <= ASTEROID_MIN_RADIUS:
-        #     return
-        # else:
-        #     new_radius = self.radius - ASTEROID_MIN_RADIUS
-        #     random_angle = random.uniform(20,50)
+        if self.radius <= ASTEROID_MIN_RADIUS:  
+            return # smallest asteroids do nothing
+        else:
+            new_radius = self.radius - ASTEROID_MIN_RADIUS
+            random_angle = random.uniform(20,50)
 
-        #     # first split asteroid 
-        #     asteroid_1 = Asteroid(self.position.x, self.position.y,new_radius)
-        #     asteroid_1.velocity = self.velocity.rotate(random_angle) * 1.2
+            # first split asteroid 
+            a1 = Asteroid(self.position.x, self.position.y, new_radius)
+            a1.velocity = self.velocity.rotate(random_angle) * 1.2
 
-        #     pos = self.position.copy()
-        #     a1 = Asteroid(pos, new_radius)  
-        #     a1.velocity = self.velocity.rotate(random_angle) * 1.2
-        #     Asteroid.container(a1)
+            # second split asteroid 
+            a2 = Asteroid(self.position.x, self.position.y, new_radius)
+            a2.velocity = self.velocity.rotate(-random_angle) * 1.2
+            
 
             
 
