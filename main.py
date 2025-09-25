@@ -50,7 +50,15 @@ def main():
         for _ in asteroids:
             if _.collision(player) == True:
                 return print("Game over !"), exit()
-
+            
+        # remove asteroid and shot with pygame built-in method
+        for a in asteroids:
+            for s in shots:
+                if s.collision(a) == True:
+                    s.kill()
+                    a.split() 
+                   
+       
         # loop over drawables group and render each 
         for _ in drawable:
             _.draw(screen)
