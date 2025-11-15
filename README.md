@@ -4,4 +4,4 @@ The game window starts on CLI execution of main.py. Using Pygame a game loop tic
 
 These core ideas map to any interactive system—simulation loops, event handling, real-time state updates, and logging/telemetry. I practiced data structures, OOP design, and debugging with logs—useful in game dev, robotics, UI apps, and backend services that process events continuously.
 
-<img src="https://github.com/aaronmkwong/Asteroids/blob/main/Other%20Files/AsteroidsGameWindow.JPG" width="1000" height="200">
+<img src="https://github.com/aaronmkwong/Asteroids/AsteroidsGameWindow.JPG" width="1000" height="200">
